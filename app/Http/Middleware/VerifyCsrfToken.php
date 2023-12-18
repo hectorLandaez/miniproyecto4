@@ -12,6 +12,14 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+       'http://127.0.0.1:8000/alumnos/update/{id}',
+       'http://127.0.0.1:8000/alumnos/create',
+
+       'http://127.0.0.1:8000/docentes/update/{id}',
+       'http://127.0.0.1:8000/docentes/create',
+
+       'http://127.0.0.1:8000/clases/update/{id}',
+       'http://127.0.0.1:8000/clases/create',
+
     ];
 }

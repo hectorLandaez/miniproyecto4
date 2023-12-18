@@ -27,16 +27,19 @@ class docentesController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'apellido' => 'required',
-            'correo_electronico' => 'required|email|unique:usuarios',
-            'password'=> 'required'
-        ]);
-
-        Docentes::create($request->all());
-
-        return redirect()->route('/');
+        try {
+            $request->validate([
+                'nombre' => 'required',
+                'apellido' => 'required',
+                'correo_electronico' => 'required|email|unique:usuarios',
+            ]);
+    
+            Docentes::create($request->all());
+    
+            return response()->json(['message' => 'docente  creado con éxito'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     public function edit($id)

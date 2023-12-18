@@ -24,18 +24,17 @@ class clasesController extends Controller
         return view('create');
     }
 
+
+    
     public function store(Request $request)
     {
         $request->validate([
             'nombre' => 'required',
-            'apellido' => 'required',
-            'correo_electronico' => 'required|email|unique:usuarios',
-            'password'=> 'required'
+            'materia' => 'required',
         ]);
 
         Clases::create($request->all());
 
-        return redirect()->route('/');
     }
 
     public function edit($id)

@@ -19,15 +19,19 @@ class alumnosController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'apellido' => 'required',
-            'correo_electronico' => 'required|email|unique:usuarios',
-            'password'=> 'required'
-        ]);
-
-        Alumnos::create($request->all());
-        
+        try {
+            $request->validate([
+                'nombre' => 'required',
+                'apellido' => 'required',
+                'correo_electronico' => 'required|email|unique:usuarios',
+            ]);
+    
+            Alumnos::create($request->all());
+    
+            return response()->json(['message' => 'Alumno creado con éxito'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     public function edit($id)
@@ -41,18 +45,24 @@ class alumnosController extends Controller
         $request->validate([
             'nombre' => 'required',
             'apellido' => 'required',
-            'correo_electronico' => 'required|email|unique:usuarios,correo_electronico,' . $id,
+            'correo_electronico' => 'required|email|unique:alumnos,correo_electronico,' . $id,
         ]);
-
+    
         $alumno = Alumnos::findOrFail($id);
         $alumno->update($request->all());
-
+    
+        return response()->json(['message' => 'Alumno actualizado ', 'alumno' => $alumno], 200);
     }
-
     public function destroy($id)
     {
         $alumno = Alumnos::findOrFail($id);
         $alumno->delete();
 
     }
+    public function mostrarCookies(Request $request)
+{
+    $cookies = $request->cookies->all();
+
+    return response()->json($cookies);
+}
 }

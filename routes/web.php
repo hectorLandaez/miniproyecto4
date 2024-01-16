@@ -17,7 +17,7 @@ use App\Http\Controllers\AsistenciaController;
 |
 */
 
-Route::get('/alumnos', [AlumnosController::class, 'index']);
+/* Route::get('/alumnos', [AlumnosController::class, 'index']);
 Route::post('/alumnos/create', [AlumnosController::class, 'store']);
 Route::get('/alumnos/show/{id}', [AlumnosController::class, 'show'])->name('alumnos.show');
 Route::put('/alumnos/update/{id}', [AlumnosController::class, 'update'])->name('alumnos.update');
@@ -39,11 +39,10 @@ Route::delete('/clases/destroy/{id}', [clasesController::class, 'destroy'])->nam
 
 
 Route::get('/mostrar-cookies', [alumnosController::class,'mostrarCookies']);
-/* q7scKPRHH6Dmx8bR2Z9F5gq3ZUE5Z8iwVrPdZGDm */ //XSRF-TOKEN
 
 
 Route::post('/alumnos/matricular/{alumno_id}/{curso_id}', [AsistenciaController::class,'obtenerAsistencia']);
-Route::post('/alumnos/matricular/{alumno_id}/{curso_id}', [AsistenciaController::class,'registrarAsistencia']);
+Route::post('/alumnos/matricular/{alumno_id}/{curso_id}', [AsistenciaController::class,'registrarAsistencia']); */
 
 
 

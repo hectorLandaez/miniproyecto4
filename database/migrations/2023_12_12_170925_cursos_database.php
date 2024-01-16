@@ -9,20 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('cursos', function (Blueprint $table) {
             $table->id();
             $table->string('materia');
+            $table->foreignId('idEstudiante')->constrained('alumnos');
+            $table->string('asistio');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
-        //
+        Schema::dropIfExists('cursos');
     }
-};
+}
+;

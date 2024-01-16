@@ -32,7 +32,8 @@ class clasesController extends Controller
 
             return response()->json($clase, 201);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Error al crear la persona'], 500);
+            dd($e->getMessage()); 
+            return response()->json(['error' => 'Error al crear la materia'], 500);
         }
     }
 

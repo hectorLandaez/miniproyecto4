@@ -35,15 +35,10 @@ Route::delete('/docentes/destroy/{id}', [docentesController::class, 'destroy'])-
 
 
 
-
 Route::get('/clases', [clasesController::class, 'index'])->name('clases.index');
 Route::get('/clases/show/{id}', [clasesController::class, 'show'])->name('clases.show');
 Route::put('/clases/update/{id}', [clasesController::class, 'update'])->name('clases.update');
-Route::delete('/clases/destroy/{id}', [clasesController::class, 'destroy'])->name('clases.destroy');
+Route::post('/clases', [clasesController::class, 'store']);
+Route::post('/clases/destroy/{id}', [clasesController::class, 'destroy']);
 
 
-
-
-Route::get('/mostrar-cookies', [alumnosController::class,'mostrarCookies']);
-
-/* q7scKPRHH6Dmx8bR2Z9F5gq3ZUE5Z8iwVrPdZGDm */ //XSRF-TOKEN

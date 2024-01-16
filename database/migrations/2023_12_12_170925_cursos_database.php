@@ -14,11 +14,16 @@ return new class extends Migration
         Schema::create('cursos', function (Blueprint $table) {
             $table->id();
             $table->string('materia');
-            $table->foreignId('idEstudiante')->constrained('alumnos');
+            $table->unsignedBigInteger('idEstudiante');
             $table->string('asistio');
             $table->timestamps();
+        
+            $table->foreign('idEstudiante')
+                  ->references('id')
+                  ->on('alumnos')
+                  ->onDelete('cascade');
         });
-    }
+    }        
 
     public function down()
     {

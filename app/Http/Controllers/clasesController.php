@@ -24,6 +24,8 @@ class clasesController extends Controller
         $request->validate([
             'materia' => 'required',
             'idEstudiante' => 'required',
+            'IdProfesor' => 'required',
+            'profesor' => 'required',
             'asistio' => 'required',
         ]);
 

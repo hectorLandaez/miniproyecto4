@@ -10,13 +10,13 @@ class docentesController extends Controller
     public function index()
     {
         $docentes = Docentes::all();
-        return view('index', compact('docentes'));
+        return $docentes;
     }
 
     public function show($id)
     {
         $docente = Docentes::findOrFail($id);
-        return view('show', compact('usuario'));
+        return $docente;
     }
 
     public function create()
@@ -45,7 +45,7 @@ class docentesController extends Controller
     public function edit($id)
     {
         $usuario = Docentes::findOrFail($id);
-        return view('edit', compact('usuario'));
+        return $usuario;
     }
 
     public function update(Request $request, $id)
@@ -59,7 +59,7 @@ class docentesController extends Controller
         $docente = Docentes::findOrFail($id);
         $docente->update($request->all());
 
-        return redirect()->route('usuarios.index');
+        return $docente;
     }
 
     public function destroy($id)
@@ -67,6 +67,6 @@ class docentesController extends Controller
         $docente = Docentes::findOrFail($id);
         $docente->delete();
 
-        return redirect()->route('usuarios.index');
+        return $docente + 'eliminado';
     }
 }
